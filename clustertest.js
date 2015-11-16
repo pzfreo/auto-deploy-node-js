@@ -12,7 +12,6 @@ var mysql     =    require('mysql');
 if (cluster.isMaster) {  
   // Master:
   // Let's fork as many workers as you have CPU cores
-  console.log(numCPUs);
   for (var i = 0; i < numCPUs; ++i) {
     cluster.fork();
   }
@@ -39,7 +38,6 @@ if (cluster.isMaster) {
 			  return;
 			}   
 
-			console.log('connected as id ' + connection.threadId);
 		
 			connection.query("select * from user",function(err,rows){
 				connection.release();
@@ -59,6 +57,6 @@ if (cluster.isMaster) {
 		handle_database(req,res);
 	});
 
-	app.listen(3000);
+	app.listen(3001);
 
 }
