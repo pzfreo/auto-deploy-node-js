@@ -12,7 +12,7 @@ var app       =    express();
 var pool      =    mysql.createPool({
 	connectionLimit : 100, //important
 	host     : process.env.DBURL,
-	user     : 'root',
+	user     : process.env.DBUSER,
 	password : process.env.DBPW,
 	database : 'blah',
 	debug    :  false
@@ -28,7 +28,7 @@ function handle_database(req,res) {
 		}   
 
 	
-		connection.query("select * from user",function(err,rows){
+		connection.query("select * from user order by age",function(err,rows){
 			connection.release();
 			if(!err) {
 				res.json(rows);
