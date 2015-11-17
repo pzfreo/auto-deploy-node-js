@@ -7,19 +7,19 @@ var mysql     =    require('mysql');
 
 
 
-if (cluster.isMaster) {  
-  // Master:
-  // Let's fork as many workers as you have CPU cores
-  for (var i = 0; i < numCPUs; ++i) {
-    cluster.fork();
-  }
-  
-} else {
+// if (cluster.isMaster) {  
+//   // Master:
+//   // Let's fork as many workers as you have CPU cores
+//   for (var i = 0; i < numCPUs; ++i) {
+//     cluster.fork();
+//   }
+//   
+// } else {
    var app       =    express();
 
 
    var pool      =    mysql.createPool({
-	   connectionLimit : 100, //important
+	   connectionLimit : 100, 
 	   host     : process.env.DBURL,
 	   user     : process.env.DBUSER,
 	   password : process.env.DBPW,
@@ -57,4 +57,4 @@ if (cluster.isMaster) {
 
 
 	app.listen(8080);
-}
+// }
