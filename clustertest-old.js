@@ -18,30 +18,43 @@ if (cluster.isMaster) {
    var app       =    express();
 
 
+   var pool      =    mysql.createPool({
+	   connectionLimit : 100, //important
+	   host     : process.env.DBURL,
+	   user     : process.env.DBUSER,
+	   password : process.env.DBPW,
+	   database : 'blah',
+	   debug    :  false
+	});
+ 
+	function pooledGet(req,res) {
+ 
+	   pool.getConnection(function(err,connection){
+		   if (err) {
+			 connection.release();
+			 res.json({"code" : 100, "status" : "Error in connection database"});
+			 return;
+		   }   
+ 
+	
+		   connection.query("select * from user order by age limit 5",function(err,rows){
+			   connection.release();
+			   if(!err) {
+				   res.json(rows);
+			   }           
+		   });
+ 
+		   connection.on('error', function(err) {      
+				 res.json({"code" : 100, "status" : "Error in connection database"});
+				 return;     
+		   });
+	  });
+	}
+
    app.get("/",function(req,res){
-	  var connection = mysql.createConnection({
-		host     : process.env.DBURL,
-		user     : process.env.DBUSER,
-		password : process.env.DBPW,
-		database : 'blah'
+	   pooledGet(req,res);
 	  });
 
-
-   connection.connect(function(err){
-   if(!err) {
-   } else {
-	   console.log("Error connecting database ... \n\n");  
-   }
-   });
-
-  connection.query('SELECT * from user order by age limit 5', function(err, rows, fields) {
-  connection.end();
-  if (!err)
-    res.json(rows);
-  else
-    console.log('Error while performing Query.');
-  });
-  });
 
 	app.listen(8080);
 }
