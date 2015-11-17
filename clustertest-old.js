@@ -19,7 +19,7 @@ var mysql     =    require('mysql');
 
 
    var pool      =    mysql.createPool({
-	   connectionLimit : 100, 
+	   connectionLimit : 10, 
 	   host     : process.env.DBURL,
 	   user     : process.env.DBUSER,
 	   password : process.env.DBPW,
@@ -44,10 +44,7 @@ var mysql     =    require('mysql');
 			   }           
 		   });
  
-		   connection.on('error', function(err) {      
-				 res.json({"code" : 100, "status" : "Error in connection database"});
-				 return;     
-		   });
+		  
 	  });
 	}
 
