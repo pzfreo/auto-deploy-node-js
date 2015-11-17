@@ -25,7 +25,7 @@ if(!err) {
 });
 
 app.get("/",function(req,res){
-connection.query('SELECT * from user LIMIT 2', function(err, rows, fields) {
+connection.query('SELECT * from user order by age limit 5', function(err, rows, fields) {
 connection.end();
   if (!err)
     res.json(rows);
