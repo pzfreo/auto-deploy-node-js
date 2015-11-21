@@ -19,3 +19,4 @@ RUN git clone https://github.com/pzfreo/auto-deploy-node-js.git /home/ubuntu/aut
 EXPOSE 8080
 # run simpletest.js using forever
 ENTRYPOINT forever /home/ubuntu/auto-deploy-node-js/simpletest.js
+# another minor editß
