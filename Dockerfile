@@ -9,7 +9,7 @@ RUN apt-get -y install nodejs npm git
 # make sure node is available to forever 
 RUN ln -s /usr/bin/nodejs /usr/local/bin/node
 # install express.js
-RUN npm install express
+RUN npm install express mysql
 # install forever globally
 RUN npm install forever -g
 # create a directory and git pull code into it
