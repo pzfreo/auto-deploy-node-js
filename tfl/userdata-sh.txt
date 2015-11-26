@@ -1,0 +1,13 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install python2.7
+sudo apt-get install python2.7-dev 
+sudo apt-get install mosquitto -y
+sudo apt-get install python-setuptools -y
+sudo easy_install pip
+sudo pip install mosquitto
+sudo apt-get install git -y
+sudo pip install httplib2
+git clone https://github.com/pzfreo/auto-deploy-node-js.git
+cd auto-deploy-node-js/tfl
+python tflrepub.py
