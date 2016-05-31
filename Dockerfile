@@ -3,7 +3,7 @@ MAINTAINER Paul Fremantle (paul@fremantle.org)
 
 RUN apk --update add nodejs  && \
 	ln -s /usr/bin/nodejs /usr/local/bin/node && \
-	npm install express mysql && \
+	npm install express  && \
 	npm install -g forever && \
 	mkdir -p /home/root/js
 
