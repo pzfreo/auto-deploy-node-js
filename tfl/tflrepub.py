@@ -1,12 +1,12 @@
 import time
-import paho.mqtt.client as mosquitto
+import paho.mqtt.client as paho
 import httplib2
 from urllib import urlencode
 import json
 
 def call_get_arrivals(line):
 
-    h = httplib2.Http(); # disable_ssl_certificate_validation=True)
+    h = httplib2.Http(disable_ssl_certificate_validation=True)
 #    h.add_credentials(intro_username, intro_password)
     resp, content = h.request("https://api.tfl.gov.uk/Line/"+line+"/Arrivals")
 
@@ -25,15 +25,17 @@ def call_get_arrivals(line):
        
    #     data = dict(temp=temp, humidity=humidity, pressure=pressure, windspeed=windspeed, winddirection=winddirection, country=country,city=city)
 #         print data
-         client.publish("/tfl/", json.dumps(data), 0)
+         print client.publish("/tfl/", payload=json.dumps(data),qos=0)
     except Exception as inst:
        pass
      
     client.loop()
 
 lines = ["victoria","circle","district","northern","jubilee","piccadilly","metropolitan","bakerloo","central" ]
-client = mosquitto.Mosquitto("client")
-print client.connect("mqtt.freo.me")
+print "about to connect"
+client = paho.Client()
+print client
+print client.connect("localhost")
 
 while 1==1:
     for line in lines:
