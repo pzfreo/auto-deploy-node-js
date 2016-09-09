@@ -1,5 +1,5 @@
 import time
-import mosquitto
+import paho.mqtt.client as mosquitto
 import httplib2
 from urllib import urlencode
 import json
