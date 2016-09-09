@@ -22,20 +22,16 @@ def call_get_arrivals(line):
          timestamp = i['timestamp']
          ttl = i['timeToLive']
          data = dict(line=line, trainNumber = trainNumber, stationId = stationId, stationName=stationName, timestamp=timestamp, expArrival = expArrival, ttl = ttl)
-       
-   #     data = dict(temp=temp, humidity=humidity, pressure=pressure, windspeed=windspeed, winddirection=winddirection, country=country,city=city)
-#         print data
-         print client.publish("/tfl/", payload=json.dumps(data),qos=0)
+         #print data
+         client.publish("/tfl/", payload=json.dumps(data),qos=0)
     except Exception as inst:
        pass
      
     client.loop()
 
 lines = ["victoria","circle","district","northern","jubilee","piccadilly","metropolitan","bakerloo","central" ]
-print "about to connect"
 client = paho.Client()
-print client
-print client.connect("localhost")
+client.connect("mqtt.freo.me")
 
 while 1==1:
     for line in lines:
