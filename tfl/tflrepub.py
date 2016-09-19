@@ -31,7 +31,7 @@ def call_get_arrivals(line):
 
 lines = ["victoria","circle","district","northern","jubilee","piccadilly","metropolitan","bakerloo","central" ]
 client = paho.Client()
-client.connect("mqtt.freo.me")
+client.connect('mqtt')
 
 while 1==1:
     for line in lines:

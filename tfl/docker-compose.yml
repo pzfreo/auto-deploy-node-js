@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mqtt:
+      build:
+        context: .
+        dockerfile: Dockerfile-mqtt
+      ports:
+           - "1883:1883"
+  tfl:
+      depends_on:
+          - mqtt
+      build: 
+          context: .
+          dockerfile: Dockerfile
