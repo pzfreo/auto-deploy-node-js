@@ -2,3 +2,5 @@
 # re-creating the autoscaling launch configuration
 export DBHOST=oxclodb-TEST.cluster-czz5taax8rqa.us-east-1.rds.amazonaws.com
 export DBPORT=3306
+
+#reminder: set DBUSER and DBPW in userdata
