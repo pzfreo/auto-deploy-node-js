@@ -18,23 +18,25 @@ var mysql     =    require('mysql');
    var app       =    express();
 
 
-   var pool      =    mysql.createPool({
-	   connectionLimit : 10, 
-	   host     : process.env.DBURL,
-	   user     : process.env.DBUSER,
-	   password : process.env.DBPW,
-	   database : 'blah',
-	   debug    :  false
-	});
- 
-	function pooledGet(req,res) {
- 
-	   pool.getConnection(function(err,connection){
-		   if (err) {
-// 			 connection.release();
-			 res.json({"code" : 100, "status" : "Error in connection database"});
-			 return;
-		   }   
+ var pool      =    mysql.createPool({
+           connectionLimit : 10,
+           host     : process.env.DBHOST,
+           port     : process.env.DBPORT,
+           user     : process.env.DBUSER,
+           password : process.env.DBPW,
+           database : 'blah',
+           debug    :  false
+        });
+
+        function pooledGet(req,res) {
+
+           pool.getConnection(function(err,connection){
+                   if (err) {
+//                       connection.release();
+                         res.json({"code" : 100, "status" : "Error in connection database", "detail":err, "user":process.env.DBUSER});
+                         return;
+                   }
+  
  
 	
 		   connection.query("select * from user order by age limit 5",function(err,rows){
