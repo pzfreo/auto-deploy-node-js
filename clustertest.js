@@ -33,7 +33,7 @@ var mysql     =    require('mysql');
            pool.getConnection(function(err,connection){
                    if (err) {
 //                       connection.release();
-                         res.json({"code" : 100, "status" : "Error in connection database", "detail":err, "user":process.env.DBUSER});
+                         res.json({"code" : 100, "status" : "Error in connection database", "detail":err, "database":process.env.DBHOST});
                          return;
                    }
   
