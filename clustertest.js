@@ -20,8 +20,7 @@ var mysql     =    require('mysql');
 
  var pool      =    mysql.createPool({
            connectionLimit : 10,
-           host     : process.env.DBHOST,
-           port     : process.env.DBPORT,
+           host     : process.env.DBURL,
            user     : process.env.DBUSER,
            password : process.env.DBPW,
            database : 'blah',
@@ -33,7 +32,7 @@ var mysql     =    require('mysql');
            pool.getConnection(function(err,connection){
                    if (err) {
 //                       connection.release();
-                         res.json({"code" : 100, "status" : "Error in connection database", "detail":err, "database":process.env.DBHOST});
+                         res.json({"code" : 100, "status" : "Error in connection database", "detail":err, "database":process.env.DBURL});
                          return;
                    }
   
