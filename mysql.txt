@@ -1,0 +1,6 @@
+create database blah;
+use blah;
+
+CREATE TABLE user( user_id INT NOT NULL, last_name VARCHAR(50) NOT NULL, first_name VARCHAR(50), age INT );
+insert into user values (1, "lastname", "firstname", 19);
+select * from user order by age limit 5 ;
