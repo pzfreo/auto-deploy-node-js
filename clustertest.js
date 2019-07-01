@@ -23,7 +23,7 @@ var mysql     =    require('mysql');
 	   host     : process.env.DBURL,
 	   user     : process.env.DBUSER,
 	   password : process.env.DBPW,
-	   database : 'blah',
+	   database : 'oxclo',
 	   debug    :  false
 	});
  
