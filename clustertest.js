@@ -1,7 +1,3 @@
-var cluster = require('cluster');  
-var os = require('os');
-
-var numCPUs = os.cpus().length;
 var express   =    require("express");
 var mysql     =    require('mysql');
 
