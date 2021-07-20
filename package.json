@@ -1,0 +1,24 @@
+{
+  "name": "auto-deploy-node",
+  "version": "1.0.0",
+  "description": "Some code to git clone and run automatically on node.",
+  "main": "clustertest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node clustertest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pzfreo/auto-deploy-node-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pzfreo/auto-deploy-node-js/issues"
+  },
+  "homepage": "https://github.com/pzfreo/auto-deploy-node-js#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
