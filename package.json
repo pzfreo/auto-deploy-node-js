@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/pzfreo/auto-deploy-node-js#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql": "^2.18.1"
   }
 }
